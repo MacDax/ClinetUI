@@ -35,6 +35,19 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
              .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
              .logoutSuccessUrl("/").and().exceptionHandling()
              .accessDeniedPage("/access-denied");*/
+		
+		
+		/*.and()
+        .logout()
+        .logoutUrl("/logout")
+        .deleteCookies("JSESSIONID")
+        .invalidateHttpSession(true)
+        .logoutSuccessUrl("/login?logout")
+        .permitAll()
+    .and()
+        .rememberMe()
+        .rememberMeParameter("remember-me")
+        .key("myKey");*/
 	}
 	
 	@Override
