@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Get Data</title>
+<title>List of ServiceProviders</title>
 </head>
 <body>
 
@@ -12,29 +12,17 @@
     <div>
         Get Data 
     </div>
-    <p><label>HRPersonal List</label></p>
-     <a href="${contextpath}/myschool/hrpersons">List available Service Providers</a>
- <%--    <c:forEach var="person" items="${personalProfileResponse}">
+    <p><label>HRPersonals List</label></p>
+    <%--  <a href="${contextpath}/myschool/hrpersons">List available Service Providers</a> --%>
+    <c:forEach var="person" items="${personalProfileResponse}">
     	<c:out value="${person.id}"></c:out>
     	<c:out value="${person.fname}"></c:out>
     	<c:out value="${person.lname}"></c:out>
     	<c:forEach var="services" items="${person.services}">
     		<c:out value="${person.services.serviceName}"></c:out>
     	</c:forEach>
-    </c:forEach> --%>
-    <div id="postData">
-    <p><h3> POST DATA OF Service Provider</h3>
-    <a href="${contextpath}/myschool/addhrperson">Add Service Provider</a> 
-   
-  
-    	<div>
-    	<c:out value="${successMessage}"></c:out>
-    	<c:out value="${failureMessage}"> </c:out>
-    	</div> 
+    </c:forEach>
     
-    </div>
-   
-    </div>
 </body>
 
 </html>

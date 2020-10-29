@@ -28,9 +28,33 @@ public class HRPersonalService {
 	@Inject
 	private Delegate<PersonalProfileRequestTO, PersonalProfileResponseTO> getHRPersonalDelegate;
 	private final Logger logger = LoggerFactory.getLogger(HRPersonalService.class);
+	private final static String hrServiceUrl = "/persons";
+	
+	public boolean saveHRPersonData(HRPersonalProfile person) {
+		boolean result = false;
+		PersonalProfileRequestTO request = new PersonalProfileRequestTO();
+		request.setRequestURI(hrServiceUrl);
+		request.setRestMethodType(HTTP_METHOD_TYPE.POST);
+		request.setApplicationHostContext(getCommonContextDynamic());
+		request.setContentBodyType(HTTP_ENTITY_TYPE.CONTENT_BODY); 
+		request.setFname(person.getFname());
+		request.setLname(person.getLname());
+		logger.info("person data to save : " + request.toString());
+		try {
+		PersonalProfileResponseTO response = getHRPersonalDelegate.execute(request);
+		if(null != response) {
+			logger.info("response received: Person data saved in db" + response.toString());
+			result = true;
+		}
+		}catch(Exception ex) {
+			logger.info("ex received when saving person data");
+			ex.printStackTrace();
+		}
+		return result;
+	}
 	
 	public List<HRPersonalProfile> getHRPersonsList() {
-		String hrServiceUrl = "/persons";
+		
 		PersonalProfileRequestTO request = new PersonalProfileRequestTO();
 		request.setRequestURI(hrServiceUrl);
 		request.setRestMethodType(HTTP_METHOD_TYPE.GET);

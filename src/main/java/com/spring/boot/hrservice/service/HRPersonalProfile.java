@@ -61,4 +61,11 @@ public class HRPersonalProfile {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "HRPersonalProfile [fname=" + fname + ", lname=" + lname + ", birthdate=" + birthdate + ", address="
+				+ address + ", services=" + services + ", id=" + id + "]";
+	}
+
+	
 }
