@@ -19,6 +19,8 @@ import com.springb.framework.common.core.Delegate;
 import com.springb.framework.common.core.MessageStatus;
 import com.springb.framework.common.core.RESTHttpProtocolHandler.HTTP_ENTITY_TYPE;
 import com.springb.framework.common.core.RESTHttpProtocolHandler.HTTP_METHOD_TYPE;
+import com.springb.framework.common.core.RESTHttpProtocolHandler.REST_PROTOCOL_DATA_ELEMENTS;
+import com.springb.hrservice.hrservicedelegate.Person;
 import com.springb.hrservice.hrservicedelegate.PersonalProfileRequestTO;
 import com.springb.hrservice.hrservicedelegate.PersonalProfileResponseTO;
 
@@ -36,9 +38,15 @@ public class HRPersonalService {
 		request.setRequestURI(hrServiceUrl);
 		request.setRestMethodType(HTTP_METHOD_TYPE.POST);
 		request.setApplicationHostContext(getCommonContextDynamic());
-		request.setContentBodyType(HTTP_ENTITY_TYPE.CONTENT_BODY); 
-		request.setFname(person.getFname());
-		request.setLname(person.getLname());
+		//request.setContentBodyType(HTTP_ENTITY_TYPE.CONTENT_BODY); 
+		//request.setHeaderContentType(REST_PROTOCOL_DATA_ELEMENTS.CONTENT_HEADER_TYPE);
+		Person personData = new Person(); 
+		personData.setFname(person.getFname());
+		personData.setLname(person.getLname());
+		personData.setBirthdate(person.getBirthdate());
+		List<Person> personDataList = new ArrayList<>();
+		personDataList.add(personData);
+		request.setPersonData(personDataList);;
 		logger.info("person data to save : " + request.toString());
 		try {
 		PersonalProfileResponseTO response = getHRPersonalDelegate.execute(request);

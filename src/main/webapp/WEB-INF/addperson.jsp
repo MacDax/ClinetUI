@@ -13,12 +13,12 @@
         POST Data 
     </div>
     <div id="postPersonData">
-    	<form:form action="http://localhost:8090/myschool/hrpersons" method="post" modelAttribure="hRPersonalProfile">
+    	<form:form action="${contextpath}/myschool/hrpersons" method="post" modelAttribure="hRPersonalProfile">
     		<p>
     		<label>Enter Data</label>
     		<input type="text" name="fname">
     		<input type="text" name="lname">
-    		<!-- <input type="date" name="birthDate">-->
+    		<input type="date" name="birthdate">
     		<input type="SUBMIT" value="Post Data">
     		</p>
     	</form:form>

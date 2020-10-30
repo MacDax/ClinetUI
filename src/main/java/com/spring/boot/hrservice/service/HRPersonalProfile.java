@@ -3,11 +3,14 @@ package com.spring.boot.hrservice.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 public class HRPersonalProfile {
 	private String fname;
 	private String lname;
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private LocalDate birthdate;
 	private String address;
 	private List<OccupationServices> services;

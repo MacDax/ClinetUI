@@ -48,9 +48,9 @@ public class HomeController {
 		return mv;
 	}
 
-	@PostMapping(value = "/hrperson")
+	@PostMapping(value = "/hrpersons")
 	public ModelAndView saveHRPersonData(@ModelAttribute("hRPersonalProfile") HRPersonalProfile hRPersonalProfile) {
-		logger.info("Input data to save : " + hRPersonalProfile.toString());
+		logger.info("Input data to save : " + hRPersonalProfile.getBirthdate());
 		ModelAndView mv = new ModelAndView("index");
 		boolean personList = hrService.saveHRPersonData(hRPersonalProfile);
 		if (personList) {
