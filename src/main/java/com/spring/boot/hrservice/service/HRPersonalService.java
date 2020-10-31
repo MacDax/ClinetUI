@@ -30,7 +30,7 @@ public class HRPersonalService {
 	@Inject
 	private Delegate<PersonalProfileRequestTO, PersonalProfileResponseTO> getHRPersonalDelegate;
 	private final Logger logger = LoggerFactory.getLogger(HRPersonalService.class);
-	private final static String hrServiceUrl = "/persons";
+	private final static String hrServiceUrl = "/persons/personsdata";
 	
 	public boolean saveHRPersonData(HRPersonalProfile person) {
 		boolean result = false;

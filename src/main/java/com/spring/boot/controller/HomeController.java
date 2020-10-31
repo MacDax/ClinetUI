@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.boot.hrservice.service.HRPersonalProfile;
 import com.spring.boot.hrservice.service.HRPersonalService;
+import com.spring.boot.hrservice.service.OccupationServices;
+import com.spring.boot.hrservice.service.ServicesDataService;
 
 @Controller
 public class HomeController {
@@ -24,7 +26,22 @@ public class HomeController {
 	private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Inject
 	HRPersonalService hrService;
-
+	@Inject
+	ServicesDataService occupationDataService;
+	
+	
+	@GetMapping(value={"/services"}, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ModelAndView getServicesData() {
+		ModelAndView mv = new ModelAndView("index");
+		try {
+			List<OccupationServices> servicesList = occupationDataService.getServicesData();
+			mv.addObject("servicesDataResponse", servicesList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mv;
+	}
+	
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public ModelAndView getIndexPage() {
 		logger.info("In index page");

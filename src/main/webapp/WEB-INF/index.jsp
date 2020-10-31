@@ -14,14 +14,9 @@
     </div>
     <p><label>HRPersonal List</label></p>
      <a href="${contextpath}/myschool/hrpersons">List available Service Providers</a>
- <%--    <c:forEach var="person" items="${personalProfileResponse}">
-    	<c:out value="${person.id}"></c:out>
-    	<c:out value="${person.fname}"></c:out>
-    	<c:out value="${person.lname}"></c:out>
-    	<c:forEach var="services" items="${person.services}">
-    		<c:out value="${person.services.serviceName}"></c:out>
-    	</c:forEach>
-    </c:forEach> --%>
+     
+     
+
     <div id="postData">
     <p><h3> POST DATA OF Service Provider</h3>
     <a href="${contextpath}/myschool/addhrperson">Add Service Provider</a> 
@@ -34,6 +29,17 @@
     
     </div>
    
+   <div>
+      Services Data List
+      
+          <c:forEach var="service" items="${servicesDataResponse}">
+    	<c:out value="${servic.id}"></c:out>
+    	<c:out value="${service.serviceName}"></c:out>
+    	<c:out value="${service.serviceType}"></c:out>
+    	<%-- <c:forEach var="services" items="${person.services}">
+    		<c:out value="${person.services.serviceName}"></c:out>
+    	</c:forEach> --%>
+    </c:forEach>
     </div>
 </body>
 
